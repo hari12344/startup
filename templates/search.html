@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+   Courses
+{% endblock title %}
+
+{% block body %}
+<div class="container">
+    {% include 'messages.html' %}
+<h1 class="text-center mt-3 text-success">Search Courses</h1>
+<hr>
+<div class="row">
+    {% for  course in courses  %}
+    <div class="col-md-4">
+        <div class="card mb-3">
+            <div class="card-body text-success  .bg-gradient">
+              <h5 class="card-title">{{course.courseName}}</h5>
+            </div>
+            <img src="{{course.images.url}}" class="card-img-top" height="220px" alt="...">
+            <div class="card-body">
+              <p class="card-text"> Courase Fee : {{course.courseFee}} | Duration : {{course.courseDuration}} 
+                {% if course.courseDuration < 6 %}Month {% else %}Weeks {% endif %}</p>
+            </div>
+           
+            <div class="card-body">
+                <button type="button" class="btn btn-outline-secondary"><a href="/course/{{course.courseName}}/" class="text-dark">Know More</a></button>
+                <button type="button" class="btn btn-outline-secondary"> <a href="/enroll/" class="card-link text-dark">Enroll</a></button>
+             
+            </div>
+           
+          </div>
+         
+          
+    </div>
+    {% empty %}
+    <P class="h4 text-center">
+        No Record Found 
+    </P>
+
+    {% endfor %}
+</div>
+</div>
+{% endblock body %}

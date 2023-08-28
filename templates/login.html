@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Login
+{% endblock title %}
+
+{% block body %}
+
+
+<div class="container mt-3">
+    <div class="row">
+            <div class="col-md-4 "></div>
+        <div class="col-md-4 ">
+           
+                <h1 class="text-center text-success">Login</h1>
+                {% include 'messages.html' %}
+
+                
+            <form action="/auth/login/" method="post">
+              {% csrf_token %}
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label" >Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username">
+                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Password</label><br>
+                  <div class="input-group"> 
+                  <input type="password" class="form-control" id="Password1" name="password" >
+                  <button class="btn btn-info bi-eye-slash" type="button" id="button-addon2"></button>
+                  </div> 
+                </div>
+                
+                
+                <div class="d-grid gap-2">
+                    <button class="btn btn-lg btn-success" type="submit">Login</button>
+                  </div>
+                <hr>
+                <p class="h6 text-center">New User? <a href="/auth/signup/" class="text-center"> Signup</a> </p>
+              </form>
+           
+        </div>
+        <div class="col-md-4 "></div>
+        
+    </div>
+</div>
+
+{% endblock body %}
+
+{% block script %}
+<script>
+const togglePassword = document.querySelector('#button-addon2');
+const password = document.querySelector('#Password1');
+
+togglePassword.addEventListener('click', function (e) {
+  
+  const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+ 
+  password.setAttribute('type', type);
+  this.classList.toggle('bi-eye');
+  console.log(this);
+});
+
+</script>
+
+{% endblock script %}

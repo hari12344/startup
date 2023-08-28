@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    profile
+{% endblock title %}
+
+{% block body %}
+{% include 'messages.html' %}
+<div class="container">
+<div class="row mt-4">
+    <nav>
+    <a href="/home/" class='btn  me-auto mb-2 text-primary'>GoTo Home</a> 
+    <a href="/profileupdate/{{ obj.condidateId }}/" class='btn  me-auto mb-2 text-end text-primary'>Update Details</a>
+    </nav>
+    <p class="h1 text-center text-success">Condidate Details</p>
+    
+    
+    <hr>
+
+</div>
+
+
+<div class="row mt-4"> 
+<div class="col-md-4">
+    <h2>Personal Information</h2>
+    <p><strong>CandidateId:</strong> {{ obj.condidateId }}</p>
+
+    <p><strong>Email:</strong> {{ obj.email }}</p>
+    <p><strong>First Name:</strong> {{ obj.fname }}</p>
+    <p><strong>Last Name:</strong> {{ obj.lname }}</p>
+    <p><strong>Father's Name:</strong> {{ obj.father_name }}</p>
+    <p><strong>Phone Number:</strong> {{ obj.phoneNumber }}</p>
+    <p><strong>Alternate Phone Number:</strong> {{ obj.alternetPhoneNumber }}</p>
+
+</div>
+<div class="col-md-4">
+   
+        
+        
+        
+        
+        <h2>College Information</h2>
+        <p><strong>College Name:</strong> {{ obj.collegename }}</p>
+        
+        
+        
+        <h2>Qualification and Course</h2>
+        <p><strong>Qualification:</strong> {{ obj.qualifaction }}</p>
+        <p><strong>Course:</strong> {{ obj.course }}</p>
+        
+        <h2>Trainer</h2>
+        <p><strong>Trainer:</strong> {{ obj.trainer }}</p>
+        
+   
+
+
+</div>
+<div class="col-md-4">
+    <h2>Address Information</h2>
+        <p><strong>Address:</strong> {{ obj.address }}</p>
+        <p><strong>Street:</strong> {{ obj.street }}</p>
+        <p><strong>Landmark:</strong> {{ obj.landmark }}</p>
+        <p><strong>Pincode:</strong> {{ obj.pincode }}</p>
+    
+        
+</div>
+
+</div>
+<hr>
+<div class="row">
+    <table class="table table-striped table-dark table-responsive">
+        <thead >
+            <th>Date</th>
+            <th>Day</th>
+            <th>Attendence</th>
+        </thead>
+        <tbody>
+            {% for attendence in attendences %}
+            <tr>
+                <td>{{ attendence.date}}</td>
+                <td>{{ attendence.date}}</td>
+                <td>{% if  attendence.present  %}Persent {% else %}Absent{% endif %}</td>
+            </tr>
+            {% endfor %}
+            
+             
+        </tbody>
+    </table>
+</div>
+
+</div>
+{% include 'footer.html' %}
+{% endblock body %}
+

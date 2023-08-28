@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    
+{% endblock title %}
+
+{% block body %}
+<div class="container mt-3">
+   {% for c in course %}
+   <h1 class="bg-white text-success text-center ">{{c.courseName}}</h1>
+   <hr>
+   <div class='row'>
+    
+        <div class="col-md-4 ">
+                
+                    <div class="card mb-3">
+                        <div class="card-body text-success  .bg-gradient">
+                            <h5 class="card-title">{{c.courseName}}</h5>
+                        </div>
+                        <img src="{{c.images.url}}" class="card-img-top" height="220px" alt="...">
+                        <div class="card-body">
+                            <p class="card-text"> Courase Fee : {{c.courseFee}} | Duration : {{c.courseDuration}} 
+                            {% if c.courseDuration < 6 %}Month {% else %}Weeks {% endif %}</p>
+                        </div>
+                </div>
+        </div>
+        
+
+        <div class="col-md-8  ">
+            <p class="h6">{{c.About_Course|safe}}</p>
+            <p class="h6">
+                <span class="text-primary">Review {{c.stars}}</span>
+            {% for i in 'abcdefgh'|slice:c.stars %}
+                
+            <span class="text-warning"><i class="bi bi-star-fill"></i></span>
+            {% endfor %}
+
+                
+        </p>
+            <button type="button" class="btn btn-primary"> <a href="/enroll/" class="card-link text-dark h5">Enroll now</a></button>
+            
+        </div>
+        <div class="mt-4">
+            <h1 class="text-center h4"> Syallbus of {{c.courseName}}</h1><hr>
+            {{c.syallbus|safe}}</div>
+        
+   </div>
+   
+   {% endfor %}
+</div>
+{% include 'footer.html' %}
+{% endblock body %}

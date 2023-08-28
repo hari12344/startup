@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+About Us - H&H
+{% endblock title %}
+{% block style %}
+
+{% endblock style %}
+
+{% block body %}
+
+
+    <div class="container-fluid">
+        <div class="row px-5 m-3">
+            <div class="col-md-6">
+                <h1>About Us</h1>
+                <p>Welcome to <strong>H&H</strong>! We're thrilled to have you here and share our story with you.</p>
+                <p>We believe in giving back to the community that has supported us. Through initiatives such as [mention any philanthropic or community projects you're involved in], we aim to [describe the positive impact your company strives to make on society].</p>
+        
+        
+                <p>We'd love to hear from you! If you have any questions, feedback, or just want to say hello, feel free to reach out to us at [provide contact information].</p>
+                <br><br><a href="" class="btn btn-success ">Contact Us</a>    
+            </div>
+            
+            <div class="col-md-6">
+                <img src="{% static 'images/office.webp' %}">
+            </div>
+        </div>
+    </div>
+
+
+
+    
+    {% include 'footer.html' %}
+    
+{% endblock body %}
+
+

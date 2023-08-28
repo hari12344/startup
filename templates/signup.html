@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load socialaccount %}
+{% load custom_filter %}
+
+{% block title %}
+    Signup
+{% endblock title %}
+
+{% block body %}
+
+<div class="container mt-3">
+    <div class="row">
+            <div class="col-md-4 "></div>
+        <div class="col-md-4 ">
+            <h1 class="text-center">Signup</h1>
+            {% include 'messages.html' %}
+            <div class="d-grid gap-2 mx-auto">
+              <button class="btn btn-outline-success" type="button"><a href="{% provider_login_url 'google' %}" class="text-dark">Login with <i class="bi bi-google"></i></a>
+              </button>
+            </div>
+            <hr> <p class="text-center mb-0">or</P>
+            <form action="/auth/signup/" method = "post">{% csrf_token %}
+              
+              
+                <div class="mb-3">
+                    <label for="fullname" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="fullname" aria-describedby="emailHelp" name="username">
+                  </div>
+                <div class="mb-3">
+                  <label for="Email1" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="Email1" aria-describedby="emailHelp" name="email">
+                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="Password1" class="form-label">Password</label>
+                  <div class="input-group">
+                  <input type="password" class="form-control" id="Password1" name="Password1">
+                  <button class="btn btn-info bi-eye-slash" type="button" id="button-addon1" ></button>
+
+                </div>
+               
+                  </div>
+                <div class="mb-3">
+                  <label for="ConfirmPassword1" class="form-label">Confirm Password</label>
+                  <div class="input-group">
+                  <input type="password" class="form-control" id="ConfirmPassword1" name="ConfirmPassword1">
+                  <button class="btn btn-info bi-eye-slash" type="button" id="button-addon2" ></button>
+
+                  </div>
+                </div>
+                
+                <div class="d-grid gap-2">
+                    <button class="btn btn-lg btn-success" type="submit">SignUP</button>
+                  </div>
+                <hr>
+                <p class="h6 text-center">Already SignIn? <a href="/auth/login/" class="text-center"> Login</a> </p>
+              </form>
+            
+        </div>
+        <div class="col-md-4 "></div>
+        
+    </div>
+</div>
+{% endblock body %}
+
+{% block script %}
+<script>
+  
+ 
+ 
+const password = document.querySelector('#Password1');
+
+document.querySelector('#button-addon1').addEventListener('click', function (e) {
+  
+  const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+ 
+  password.setAttribute('type', type);
+  this.classList.toggle('bi-eye');
+  console.log(this);
+});
+
+
+const password2 = document.querySelector('#ConfirmPassword1');
+document.querySelector('#button-addon2').addEventListener('click', function (e) {
+  
+  const type = password2.getAttribute('type') === 'password' ? 'text' : 'password';
+ 
+  password2.setAttribute('type', type);
+  this.classList.toggle('bi-eye')
+  console.log(this);
+  console.log(type);
+});
+  
+</script>
+
+{% endblock script %}
+
+
+

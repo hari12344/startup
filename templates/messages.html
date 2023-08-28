@@ -1,0 +1,18 @@
+{% comment %} {% if messages %}
+    <ul class="alert alert-dismissible messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %} {% endcomment %}
+
+{% if messages %}
+    {% for message in messages %}
+<div class="alert alert-dismissible {{message.tags}}">
+
+    <button type="button" class="btn-close " data-bs-dismiss="alert"></button>
+    <p{% if message.tags %} class=" mb-0" {% endif %}> {{ message }}</p>
+</div>
+
+    {% endfor %}
+{% endif %}
